@@ -12,6 +12,18 @@ import random
 import fonctions
 
 
+#------------------------------------------------------------------------------
+#
+#   CLICKER To Farm
+#
+#need to adapt the coordonates of all the click to pass from a map to another one
+#otherwhise will do random click ===> USE clicker programm
+#
+#
+#------------------------------------------------------------------------------
+
+
+lap_number=20
 min =1 
 max= 4    
 porte = 0
@@ -32,7 +44,7 @@ edge=porte*2      #(en 2:2) par exemple2
 
 while 1 :
    
-    #==========On bouge======================
+    #==========On bouge========================================================
     for i in range (200):
 
         (actualy,actualx,direction)=decision(pos_x,pos_y)
@@ -50,23 +62,26 @@ while 1 :
 
     print("numero du tour =",compteur)
     
-
-    
+    #======= Interupt, click on F2 to stop the programm =======================
     air=interupt(20)  #F2 to stop the program, x0.1 so 2 second here
     if air==False:
         print("END")
         break
-        
+    
+    #==== FRAME CAPTURE =======================================================
     frame=capture_frame()
+    #===== FRAME TREATMENT ====================================================
     first_outpout=treatment_nvgris(110,frame)
 
     thresdown=1050000
     threshold=1200000
-    
+    #===== WHERE ARE THE TREES ================================================
     value=treatment_localisation(first_outpout,thresdown,threshold)
-    #display_Found(second,value)
-
-    if compteur==20:
+    
+    #click_red_dot(value)         #UNCOMMENT TO ACTIVE THE COLLECT
+    
+    #==== END CONDITION =======================================================
+    if compteur==lap_number:
         print("END")
         break
     else :

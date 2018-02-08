@@ -135,9 +135,9 @@ def treatment_nvgris(seuil,img):
          if px>seuil_gris:
              dst[y,x]=255
     
-    cv2.imshow('smotthing2',dst)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.imshow('smotthing2',dst)
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
     
     return dst
     
@@ -174,6 +174,12 @@ def treatment_localisation(frame,thresdown,threshold):
     return Found
 
 
+def click_red_dot(liste_dot):
+    length=len(liste_dot)
+    for i in range(0,lenght,2):
+        click(liste_dot[i],liste_dot[i+1])
+        time.sleep(1+random.randint(1,10)*0.1)
+        
 
 
 def display_Found(image,liste):
